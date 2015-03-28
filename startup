@@ -1,20 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "Starting screen..."
+#Libraries need a ldconfig
 
+ldconfig
 
-# Disable DPMS / Screen blanking
-xset -dpms
-xset s off
+useradd -m pi
 
-# Reset the framebuffer's colour-depth
-fbset -depth $( cat /sys/module/*fb*/parameters/fbdepth );
+gpasswd -a pi video
 
-# Hide the cursor (move it to the bottom-right, comment out if you want mouse interaction)
-xwit -root -warp $( cat /sys/module/*fb*/parameters/fbwidth ) $( cat /sys/module/*fb*/parameters/fbheight )
+echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-# Start the window manager (remove "-use_cursor no" if you actually want mouse interaction)
-matchbox-window-manager -use_titlebar no -use_cursor no &
+cp /app/xinitrc /home/pi/.xinitrc;
+chown pi: /home/pi/.xinitrc
 
-# Start the browser (See http://peter.sh/experiments/chromium-command-line-switches/)
-chromium  --app=https://www.gov.uk/
+su - pi -c startx &
