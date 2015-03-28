@@ -4,4 +4,4 @@ RUN apt-get update && apt-get install -y chromium
 
 ADD . /app
 
-CMD ["/usr/bin/chromium-browser", "--start-fullscreen", "https://www.gov.uk"]
+CMD ["echo", "Hello, world!", "&&", "/usr/bin/chromium-browser", "--start-fullscreen", "https://www.gov.uk"]
