@@ -13,4 +13,6 @@ echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 cp /app/xinitrc /home/pi/.xinitrc;
 chown pi: /home/pi/.xinitrc
 
+sync
+
 su - pi -c startx &
