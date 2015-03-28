@@ -4,13 +4,14 @@
 
 ldconfig
 
-# useradd -m pi
-# gpasswd -a pi video
+useradd -m pi
+gpasswd -a pi video
 
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-cp /app/xinitrc /root/.xinitrc;
-chown pi: /root/.xinitrc
+cp /app/xinitrc /home/pi/.xinitrc;
+chown pi: /home/pi/.xinitrc
+ln -fs /boot/xinitrc /home/pi/.xinitrc;
 
 sync
 
@@ -39,4 +40,4 @@ sleep 1;
 
 
 echo "Starting X"
-startx
+su - pi -c "startx"
