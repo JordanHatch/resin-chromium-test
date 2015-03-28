@@ -4,4 +4,4 @@ RUN apt-get update && apt-get install -y matchbox chromium x11-xserver-utils ttf
 
 ADD . /app
 
-CMD ["/app/startup"]
+CMD /app/startup
