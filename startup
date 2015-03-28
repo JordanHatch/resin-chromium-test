@@ -10,8 +10,8 @@ gpasswd -a pi video
 
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-#cp /app/xinitrc /home/pi/.xinitrc;
-#chown pi: /home/pi/.xinitrc
+cp /app/xinitrc /home/pi/.xinitrc;
+chown pi: /home/pi/.xinitrc
 
 sync
 
@@ -41,4 +41,4 @@ sleep 1;
 
 echo "Starting X"
 
-su - pi -c startx &
+su - pi startx
